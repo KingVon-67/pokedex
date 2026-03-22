@@ -23,8 +23,9 @@ const pokedex = [
   { id: 133, name: "Evoli", type: "normal", level: 10 }
 ];
 
-//toutes les requetes
+// toutes les requetes
 
+// 1
 // lister les Pokemons avec limite
 
 app.get('/api/pokemon',(req,res)=>{
@@ -39,3 +40,43 @@ if (limit){
     res.send(pokedex)
 }
 })
+
+app.get('/api/pokemon/', (req, res) => {
+  var limit = req.query.limit;
+
+  if (limit) {
+    if (limit > 0) {
+      res.send(pokedex.slice(0, limit))
+    }
+  }
+})
+
+
+
+
+
+// 2
+// chercher un pokemon par id
+
+app.get('/api/pokemon/:id',(req,res)=>{
+  var ID = req.params.id
+  
+  if(ID > 0){
+    var Identifiant = pokedex.find(p => p.id == ID)
+    if(Identifiant == undefined){
+      res.send("ERREUR 404")
+    }
+    else{
+      res.send("Erreur")
+         res.send(Identifiant)
+    }
+  }
+  else{
+    res.send(pokedex)
+    res.send('ERREUR 400')
+  }
+  
+})
+
+
+
