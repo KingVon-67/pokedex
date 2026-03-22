@@ -79,4 +79,22 @@ app.get('/api/pokemon/:id',(req,res)=>{
 })
 
 
+// 3
+// chercher un pokemon par type
+app.get('/api/type/:type' ,(req,res)=>{
+  var TYPE = req.params.type.toLowerCase()
+  
+  var saltype = pokedex.filter(p => p.type == TYPE)
+  if (saltype.length == 0){
+    res.send("ERREUR 404")
+  }
+  else{
+      res.send(saltype)
+  }
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
 
