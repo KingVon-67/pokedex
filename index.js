@@ -9,3 +9,16 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+app.get('/api', (req, res) => {
+  res.send(pokedex)
+})
+// creation du pokedex
+const pokedex = [
+  { id: 1, name: "Bulbizarre", type: "plante", level: 5 },
+  { id: 4, name: "Salamèche", type: "feu", level: 5 },
+  { id: 7, name: "Carapuce", type: "eau", level: 5 },
+  { id: 25, name: "Pikachu", type: "electrik", level: 12 },
+  { id: 39, name: "Rondoudou", type: "fee", level: 8 },
+  { id: 52, name: "Miaouss", type: "normal", level: 9 },
+  { id: 133, name: "Evoli", type: "normal", level: 10 }
+];
