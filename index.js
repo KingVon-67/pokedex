@@ -117,3 +117,23 @@ app.get('/api/search' ,(req,res)=>{
     res.send("ERREUR 400")
   }
 })
+
+
+//5
+// recherche par niveau minimum
+
+app.get('/api/level/:min' ,(req,res)=>{
+  var niveau = req.params.min
+  if(niveau > 0){
+  var eligible = pokedex.filter(p => p.level >= niveau)
+  if(eligible.length==0){
+    res.send("ERREUR 404")
+  }
+  else{
+    res.send(eligible)
+  }
+  }
+  else{
+    res.send("ERREUR 400")
+  }
+})
