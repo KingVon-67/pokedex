@@ -22,3 +22,20 @@ const pokedex = [
   { id: 52, name: "Miaouss", type: "normal", level: 9 },
   { id: 133, name: "Evoli", type: "normal", level: 10 }
 ];
+
+//toutes les requetes
+
+// lister les Pokemons avec limite
+
+app.get('/api/pokemon',(req,res)=>{
+var limit = req.query.limit
+if (limit){
+    if (limit > 0) {
+        res.send(pokedex.slice(0, limit));
+    }else {
+        res.send('ERREUR 400')
+    }
+}else {
+    res.send(pokedex)
+}
+})
